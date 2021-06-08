@@ -6,41 +6,74 @@ public class PlayerMovement : MonoBehaviour
     //here i take reference from the rigidbody and call it rb
     public Rigidbody rb;
     public Transform player;
-    public PlayerMovement movement;
+    public float speed = 10f;
 
-    public float speed = 10.0f;
 
     // Update is called once per frame
 
     void FixedUpdate()
     {
-        if (Input.GetKey("d"))
+        if (player.position == new Vector3(-6, 1, 6))
         {
-            rb.AddForce(speed * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
+            if (Input.GetKey("d"))
+            {
+                player.position = new Vector3(6, 1, 6);
+            }
         }
-        if (Input.GetKey("a"))
+        if (player.position == new Vector3(6, 1, 6))
         {
-            rb.AddForce(-speed * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
-        }
-        if (Input.GetKey("w"))
-        {
-            rb.AddForce(0, 0, speed * Time.deltaTime, ForceMode.VelocityChange);
-        }
-        if (Input.GetKey("s"))
-        {
-            rb.AddForce(0, 0, -speed * Time.deltaTime, ForceMode.VelocityChange);
-        }
-    }
-    void OnCollisionEnter(Collision collision)
-    {
-        //Check for a match with the specified name on any GameObject that collides with your GameObject
-        if (collision.gameObject.tag == "wall")
-        {
-            //If the GameObject's name matches the one you suggest, output this message in the console
-            movement.enabled = false;
-            rb.constraints = RigidbodyConstraints.FreezePosition;
+            if (Input.GetKey("s"))
+            {
+                player.position = new Vector3(6, 1, -8);
+            }
         }
 
+        if (player.position == new Vector3(6, 1, -8))
+        {
+            if (Input.GetKey("a"))
+            {
+                player.position = new Vector3(-6, 1, -8);
+            }
+        }
+        if (player.position == new Vector3(-6, 1, -8))
+        {
+            if (Input.GetKey("w"))
+            {
+                player.position = new Vector3(-6, 1, 6);
+            }
+        }
+
+
+
+        if (player.position == new Vector3(-6, 1, 6))
+        {
+            if (Input.GetKey("s"))
+            {
+                player.position = new Vector3(-6, 1, -8);
+            }
+        }
+        if (player.position == new Vector3(-6, 1, -8))
+        {
+            if (Input.GetKey("d"))
+            {
+                player.position = new Vector3(6, 1, -8);
+            }
+        }
+
+        if (player.position == new Vector3(6, 1, -8))
+        {
+            if (Input.GetKey("w"))
+            {
+                player.position = new Vector3(6, 1, 6);
+            }
+        }
+        if (player.position == new Vector3(6, 1, 6))
+        {
+            if (Input.GetKey("a"))
+            {
+                player.position = new Vector3(-6, 1, 6);
+            }
+        }
     }
 }
 
