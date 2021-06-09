@@ -1,12 +1,12 @@
 using UnityEngine;
-using System.Collections;
+
 
 public class PlayerMovement : MonoBehaviour
 {
     //here i take reference from the rigidbody and call it rb
     public Rigidbody rb;
     public Transform player;
-    public float speed = 10f;
+    public float speed = 1f;
 
 
     // Update is called once per frame
@@ -53,6 +53,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
         if (player.position == new Vector3(-6, 1, -8))
+
         {
             if (Input.GetKey("d"))
             {
@@ -76,4 +77,3 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 }
-
