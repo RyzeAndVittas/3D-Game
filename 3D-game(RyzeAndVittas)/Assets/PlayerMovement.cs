@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody rb;
     public Transform player;
     public float speed = 1f;
+    public float cd = 5f;
 
 
     // Update is called once per frame
@@ -19,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 player.position = new Vector3(6, 1, 6);
             }
+
         }
         if (player.position == new Vector3(6, 1, 6))
         {
@@ -76,4 +78,5 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
+
 }
