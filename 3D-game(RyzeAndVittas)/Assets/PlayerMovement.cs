@@ -6,77 +6,37 @@ public class PlayerMovement : MonoBehaviour
     //here i take reference from the rigidbody and call it rb
     public Rigidbody rb;
     public Transform player;
-    public float speed = 1f;
-    public float cd = 5f;
+    
 
 
-    // Update is called once per frame
 
-    void FixedUpdate()
+    public float speed = 10.0f;
+    public float rotationSpeed = 100.0f;
+
+    void Update()
     {
-        if (player.position == new Vector3(-6, 1, 6))
-        {
-            if (Input.GetKey("d"))
-            {
-                player.position = new Vector3(6, 1, 6);
-            }
+        // Get the horizontal and vertical axis.
+        // By default they are mapped to the arrow keys.
+        // The value is in the range -1 to 1
+        float translation = Input.GetAxis("Horizontal") * speed;
+        float rotation = Input.GetAxis("Vertical") * rotationSpeed;
 
-        }
-        if (player.position == new Vector3(6, 1, 6))
-        {
-            if (Input.GetKey("s"))
-            {
-                player.position = new Vector3(6, 1, -8);
-            }
-        }
+        // Make it move 10 meters per second instead of 10 meters per frame...
+        translation *= Time.deltaTime;
+        rotation *= Time.deltaTime;
 
-        if (player.position == new Vector3(6, 1, -8))
-        {
-            if (Input.GetKey("a"))
-            {
-                player.position = new Vector3(-6, 1, -8);
-            }
-        }
-        if (player.position == new Vector3(-6, 1, -8))
-        {
-            if (Input.GetKey("w"))
-            {
-                player.position = new Vector3(-6, 1, 6);
-            }
-        }
+        // Move translation along the object's z-axis
+        transform.Translate(translation, 0, 0);
+        transform.Translate(0, 0, rotation);
 
 
 
-        if (player.position == new Vector3(-6, 1, 6))
-        {
-            if (Input.GetKey("s"))
-            {
-                player.position = new Vector3(-6, 1, -8);
-            }
-        }
-        if (player.position == new Vector3(-6, 1, -8))
 
-        {
-            if (Input.GetKey("d"))
-            {
-                player.position = new Vector3(6, 1, -8);
-            }
-        }
 
-        if (player.position == new Vector3(6, 1, -8))
-        {
-            if (Input.GetKey("w"))
-            {
-                player.position = new Vector3(6, 1, 6);
-            }
-        }
-        if (player.position == new Vector3(6, 1, 6))
-        {
-            if (Input.GetKey("a"))
-            {
-                player.position = new Vector3(-6, 1, 6);
-            }
-        }
+
     }
+
+   
+    
 
 }
